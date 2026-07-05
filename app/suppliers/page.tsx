@@ -28,7 +28,7 @@ export default function SuppliersPage() {
             <h1 className="text-2xl font-bold">إدارة الموردين</h1>
           </div>
           <div className="flex gap-2">
-            <Button className="bg-primary text-white">إضافة (F6)</Button>
+            <Button variant="filled" size="sm">إضافة (F6)</Button>
           </div>
         </header>
 
@@ -61,7 +61,7 @@ export default function SuppliersPage() {
                   <p className={`font-mono font-bold ${supplier.balance >= 0 ? 'text-green-600' : 'text-red-600'}`}>
                     {Math.abs(supplier.balance).toLocaleString()} {supplier.balance >= 0 ? 'دائن' : 'مدين'}
                   </p>
-                  <Button variant="ui" size="sm" className="mt-2">عرض الكشف</Button>
+                  <Button variant="outlined" size="sm" className="mt-2">عرض الكشف</Button>
                 </div>
               </Card>
             </motion.div>

@@ -22,8 +22,8 @@ export default function PurchasesPage() {
             <h1 className="text-2xl font-bold">فاتورة مشتريات</h1>
           </div>
           <div className="flex gap-2">
-            <Button variant="ui">تعليق</Button>
-            <Button className="bg-green-600 text-white">حفظ (F10)</Button>
+            <Button variant="outlined" size="sm">تعليق</Button>
+            <Button variant="success" size="sm">حفظ (F10)</Button>
           </div>
         </header>
 
@@ -65,7 +65,7 @@ export default function PurchasesPage() {
                 </tbody>
               </table>
             </div>
-            <Button variant="ui" className="w-full border-dashed">+ إضافة صنف (F6)</Button>
+            <Button variant="outlined" className="w-full border-dashed" size="sm">+ إضافة صنف (F6)</Button>
           </Card>
 
           <Card className="p-4 space-y-6 h-fit bg-primary/5 border-primary/20">
@@ -87,8 +87,8 @@ export default function PurchasesPage() {
             <div className="space-y-1">
               <label className="text-xs font-bold text-muted-foreground">طريقة الدفع</label>
               <div className="grid grid-cols-2 gap-2">
-                <Button size="sm" variant="ui">نقداً</Button>
-                <Button size="sm" className="bg-primary text-white">آجل</Button>
+                <Button size="sm" variant="outlined">نقداً</Button>
+                <Button size="sm" variant="filled">آجل</Button>
               </div>
             </div>
           </Card>

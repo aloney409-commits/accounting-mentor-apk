@@ -22,20 +22,23 @@ export default function InventoryPage() {
 
         <div className="flex gap-2 overflow-x-auto pb-2">
           <Button 
-            variant={activeTab === 'status' ? 'default' : 'ui'} 
+            variant={activeTab === 'status' ? 'filled' : 'outlined'} 
             onClick={() => setActiveTab('status')}
+            size="sm"
           >
             📦 حالة المخزون
           </Button>
           <Button 
-            variant={activeTab === 'transfer' ? 'default' : 'ui'} 
+            variant={activeTab === 'transfer' ? 'filled' : 'outlined'} 
             onClick={() => setActiveTab('transfer')}
+            size="sm"
           >
             🔄 تحويل مخزني
           </Button>
           <Button 
-            variant={activeTab === 'audit' ? 'default' : 'ui'} 
+            variant={activeTab === 'audit' ? 'filled' : 'outlined'} 
             onClick={() => setActiveTab('audit')}
+            size="sm"
           >
             📋 جرد وتسوية
           </Button>
@@ -82,9 +85,9 @@ export default function InventoryPage() {
               </div>
             </div>
             <div className="border-t pt-4">
-              <Button variant="ui" className="w-full border-dashed">+ إضافة أصناف للتحويل</Button>
+              <Button variant="outlined" className="w-full border-dashed" size="sm">+ إضافة أصناف للتحويل</Button>
             </div>
-            <Button className="w-full bg-primary text-white">تنفيذ التحويل (F10)</Button>
+            <Button className="w-full bg-primary text-white" variant="filled">تنفيذ التحويل (F10)</Button>
           </Card>
         )}
 
@@ -93,7 +96,7 @@ export default function InventoryPage() {
             <div className="text-5xl">📋</div>
             <h2 className="text-xl font-bold">تسوية كميات الجرد</h2>
             <p className="text-muted-foreground text-sm">قم بإدخال الكمية الفعلية بعد الجرد اليدوي وسيقوم النظام باحتساب الفوارق (عجز/زيادة) آلياً.</p>
-            <Button className="bg-primary text-white">بدء جرد جديد</Button>
+            <Button variant="filled">بدء جرد جديد</Button>
           </Card>
         )}
 
