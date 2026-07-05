@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ============= المتغيرات الأساسية ============= */
+:root {
+  --font-cairo: 'Cairo', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --transition-fast: 150ms ease-out;
+  --transition-normal: 250ms ease-out;
+  --transition-slow: 400ms ease-out;
+}
+
+html {
+  font-family: var(--font-cairo);
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-cairo);
+  font-feature-settings: 'kern' 1, 'liga' 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #FFFBFE;
+  color: #1D1B20;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.dark body {
+  background-color: #141218;
+  color: #E6E0E9;
+}
+
+/* حجم الخطوط */
+.font-size-sm { font-size: 14px; }
+.font-size-md { font-size: 16px; }
+.font-size-lg { font-size: 18px; }
+.font-size-xl { font-size: 20px; }
+
+/* سرعة الحركة */
+.anim-slow * { animation-duration: 1.5s !important; transition-duration: 400ms !important; }
+.anim-fast * { animation-duration: 0.2s !important; transition-duration: 100ms !important; }
+.anim-none * { animation: none !important; transition: none !important; }
+
+/* ============= مكونات Material 3 ============= */
+@layer components {
+  .m3-btn {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-medium transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+    min-height: 48px;
+  }
+
+  .m3-input {
+    @apply w-full px-4 py-3 bg-surface-container rounded-xl border-2 border-transparent focus:border-primary focus:outline-none transition-colors;
+    min-height: 56px;
+  }
+}
+
+/* ============= التدرجات ============= */
+.gradient-primary {
+  background: linear-gradient(135deg, #6750A4 0%, #9575CD 100%);
+}
+.gradient-success {
+  background: linear-gradient(135deg, #2E7D32 0%, #66BB6A 100%);
+}
+.gradient-warning {
+  background: linear-gradient(135deg, #F57C00 0%, #FFB74D 100%);
+}
+.gradient-info {
+  background: linear-gradient(135deg, #0288D1 0%, #4FC3F7 100%);
+}
+
+/* ============= بطاقات الحسابات ============= */
+.account-card {
+  @apply relative overflow-hidden rounded-2xl transition-all;
+  background: linear-gradient(135deg, var(--bg-from), var(--bg-to));
+}
+.account-card.asset { --bg-from: #E3F2FD; --bg-to: #BBDEFB; }
+.dark .account-card.asset { --bg-from: #0D47A1; --bg-to: #1565C0; }
+.account-card.liability { --bg-from: #FFEBEE; --bg-to: #FFCDD2; }
+.dark .account-card.liability { --bg-from: #B71C1C; --bg-to: #C62828; }
+.account-card.equity { --bg-from: #EDE7F6; --bg-to: #D1C4E9; }
+.dark .account-card.equity { --bg-from: #4527A0; --bg-to: #5E35B1; }
+.account-card.revenue { --bg-from: #E8F5E9; --bg-to: #C8E6C9; }
+.dark .account-card.revenue { --bg-from: #1B5E20; --bg-to: #2E7D32; }
+.account-card.expense { --bg-from: #FFF3E0; --bg-to: #FFE0B2; }
+.dark .account-card.expense { --bg-from: #E65100; --bg-to: #F57C00; }
+
+/* Glass */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.dark .glass {
+  background: rgba(20, 18, 24, 0.7);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #6750A4, #9575CD);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(103, 80, 164, 0.3); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(103, 80, 164, 0.5); }
+
+/* RTL */
+[dir='rtl'] .ltr-only { display: none; }
+[dir='ltr'] .rtl-only { display: none; }

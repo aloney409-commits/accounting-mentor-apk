@@ -1,0 +1,250 @@
+import type { QuizScenario } from '../types';
+
+export const TRAINING_SCENARIOS: QuizScenario[] = [
+  {
+    id: 't1',
+    text: 'اشتريت جهاز كمبيوتر بمبلغ 1200 دولار نقداً لاستخدام المكتب',
+    domain: 'تجاري',
+    difficulty: 'easy',
+    expectedAccounts: ['equipment', 'cash'],
+    expectedLines: [
+      { accountId: 'equipment', side: 'debit', amount: 1200 },
+      { accountId: 'cash', side: 'credit', amount: 1200 },
+    ],
+    explanation:
+      'المعدات (أصل) زادت ⟵ مدين 1200، النقدية (أصل) نقصت ⟵ دائن 1200. القيد متوازن.',
+  },
+  {
+    id: 't2',
+    text: 'دفعت راتب الموظف 500 دولار نقداً',
+    domain: 'موارد بشرية',
+    difficulty: 'easy',
+    expectedAccounts: ['salaries_expense', 'cash'],
+    expectedLines: [
+      { accountId: 'salaries_expense', side: 'debit', amount: 500 },
+      { accountId: 'cash', side: 'credit', amount: 500 },
+    ],
+    explanation: 'مصروف الرواتب زاد ⟵ مدين. النقدية نقصت ⟵ دائن.',
+  },
+  {
+    id: 't3',
+    text: 'قمت ببيع بضاعة بمبلغ 2000 دولار نقداً',
+    domain: 'تجاري',
+    difficulty: 'easy',
+    expectedAccounts: ['cash', 'sales_revenue'],
+    expectedLines: [
+      { accountId: 'cash', side: 'debit', amount: 2000 },
+      { accountId: 'sales_revenue', side: 'credit', amount: 2000 },
+    ],
+    explanation: 'النقدية (أصل) زادت ⟵ مدين. إيراد المبيعات زاد ⟵ دائن.',
+  },
+  {
+    id: 't4',
+    text: 'اشتريت بضاعة من مورد بالأجل بقيمة 3000 دولار',
+    domain: 'تجاري',
+    difficulty: 'medium',
+    expectedAccounts: ['purchases_expense', 'accounts_payable'],
+    expectedLines: [
+      { accountId: 'purchases_expense', side: 'debit', amount: 3000 },
+      { accountId: 'accounts_payable', side: 'credit', amount: 3000 },
+    ],
+    explanation: 'المشتريات (مصروف) زادت ⟵ مدين. الدائنون (التزام) زاد ⟵ دائن.',
+  },
+  {
+    id: 't5',
+    text: 'أودع المالك 10000 دولار في البنك كرأس مال',
+    domain: 'تأسيس',
+    difficulty: 'easy',
+    expectedAccounts: ['bank', 'capital'],
+    expectedLines: [
+      { accountId: 'bank', side: 'debit', amount: 10000 },
+      { accountId: 'capital', side: 'credit', amount: 10000 },
+    ],
+    explanation: 'البنك (أصل) زاد ⟵ مدين. رأس المال زاد ⟵ دائن.',
+  },
+  {
+    id: 't6',
+    text: 'دفعت إيجار المكتب 800 دولار من البنك',
+    domain: 'تشغيلي',
+    difficulty: 'easy',
+    expectedAccounts: ['rent_expense', 'bank'],
+    expectedLines: [
+      { accountId: 'rent_expense', side: 'debit', amount: 800 },
+      { accountId: 'bank', side: 'credit', amount: 800 },
+    ],
+    explanation: 'مصروف الإيجار زاد ⟵ مدين. البنك (أصل) نقص ⟵ دائن.',
+  },
+  {
+    id: 't7',
+    text: 'سددت للمورد 3000 دولار نقداً',
+    domain: 'تجاري',
+    difficulty: 'medium',
+    expectedAccounts: ['accounts_payable', 'cash'],
+    expectedLines: [
+      { accountId: 'accounts_payable', side: 'debit', amount: 3000 },
+      { accountId: 'cash', side: 'credit', amount: 3000 },
+    ],
+    explanation: 'الدائنون (التزام) نقص ⟵ مدين. النقدية نقصت ⟵ دائن.',
+  },
+  {
+    id: 't8',
+    text: 'حصلت على 5000 دولار من عميل مدين',
+    domain: 'تجاري',
+    difficulty: 'medium',
+    expectedAccounts: ['cash', 'accounts_receivable'],
+    expectedLines: [
+      { accountId: 'cash', side: 'debit', amount: 5000 },
+      { accountId: 'accounts_receivable', side: 'credit', amount: 5000 },
+    ],
+    explanation: 'النقدية زادت ⟵ مدين. المدينون (أصل) نقص ⟵ دائن.',
+  },
+  {
+    id: 't9',
+    text: 'اشترت الصيدلية أدوية بمبلغ 4000 دولار نقداً',
+    domain: 'طبي',
+    difficulty: 'medium',
+    expectedAccounts: ['medicines', 'cash'],
+    expectedLines: [
+      { accountId: 'medicines', side: 'debit', amount: 4000 },
+      { accountId: 'cash', side: 'credit', amount: 4000 },
+    ],
+    explanation: 'مخزون الأدوية (أصل) زاد ⟵ مدين. النقدية نقصت ⟵ دائن.',
+  },
+  {
+    id: 't10',
+    text: 'حصّلت المدرسة رسوماً دراسية بقيمة 6000 دولار نقداً',
+    domain: 'تعليمي',
+    difficulty: 'medium',
+    expectedAccounts: ['cash', 'tuition_revenue'],
+    expectedLines: [
+      { accountId: 'cash', side: 'debit', amount: 6000 },
+      { accountId: 'tuition_revenue', side: 'credit', amount: 6000 },
+    ],
+    explanation: 'النقدية زادت ⟵ مدين. إيراد الرسوم الدراسية زاد ⟵ دائن.',
+  },
+  {
+    id: 't11',
+    text: 'اقترضت المنشأة 20000 دولار من البنك',
+    domain: 'تمويلي',
+    difficulty: 'medium',
+    expectedAccounts: ['bank', 'loans'],
+    expectedLines: [
+      { accountId: 'bank', side: 'debit', amount: 20000 },
+      { accountId: 'loans', side: 'credit', amount: 20000 },
+    ],
+    explanation: 'البنك (أصل) زاد ⟵ مدين. القرض (التزام) زاد ⟵ دائن.',
+  },
+  {
+    id: 't12',
+    text: 'دفعت فاتورة الكهرباء 250 دولار نقداً',
+    domain: 'تشغيلي',
+    difficulty: 'easy',
+    expectedAccounts: ['utilities_expense', 'cash'],
+    expectedLines: [
+      { accountId: 'utilities_expense', side: 'debit', amount: 250 },
+      { accountId: 'cash', side: 'credit', amount: 250 },
+    ],
+    explanation: 'مصروف الخدمات زاد ⟵ مدين. النقدية نقصت ⟵ دائن.',
+  },
+  {
+    id: 't13',
+    text: 'قدمت العيادة خدمة طبية بمبلغ 700 دولار نقداً',
+    domain: 'طبي',
+    difficulty: 'medium',
+    expectedAccounts: ['cash', 'medical_revenue'],
+    expectedLines: [
+      { accountId: 'cash', side: 'debit', amount: 700 },
+      { accountId: 'medical_revenue', side: 'credit', amount: 700 },
+    ],
+    explanation: 'النقدية زادت ⟵ مدين. إيراد الخدمات الطبية زاد ⟵ دائن.',
+  },
+  {
+    id: 't14',
+    text: 'سحب المالك 1500 دولار للاستخدام الشخصي',
+    domain: 'حقوق ملكية',
+    difficulty: 'medium',
+    expectedAccounts: ['drawings', 'cash'],
+    expectedLines: [
+      { accountId: 'drawings', side: 'debit', amount: 1500 },
+      { accountId: 'cash', side: 'credit', amount: 1500 },
+    ],
+    explanation: 'المسحوبات الشخصية (نقص حقوق ملكية) ⟵ مدين. النقدية نقصت ⟵ دائن.',
+  },
+  {
+    id: 't15',
+    text: 'دفعت مصروف إعلان 900 دولار بشيك',
+    domain: 'تسويقي',
+    difficulty: 'medium',
+    expectedAccounts: ['advertising_expense', 'bank'],
+    expectedLines: [
+      { accountId: 'advertising_expense', side: 'debit', amount: 900 },
+      { accountId: 'bank', side: 'credit', amount: 900 },
+    ],
+    explanation: 'مصروف الإعلانات زاد ⟵ مدين. البنك نقص ⟵ دائن.',
+  },
+];
+
+// اختبارات (Quiz) — تُستخدم في وضع الاختبار العشوائي
+export const QUIZ_SCENARIOS: QuizScenario[] = [
+  ...TRAINING_SCENARIOS,
+  {
+    id: 'q1',
+    text: 'اشتريت أثاثاً للمكتب بمبلغ 2500 دولار نقداً',
+    domain: 'تجاري',
+    difficulty: 'easy',
+    expectedAccounts: ['furniture', 'cash'],
+    expectedLines: [
+      { accountId: 'furniture', side: 'debit', amount: 2500 },
+      { accountId: 'cash', side: 'credit', amount: 2500 },
+    ],
+    explanation: 'الأثاث (أصل) زاد ⟵ مدين. النقدية نقصت ⟵ دائن.',
+  },
+  {
+    id: 'q2',
+    text: 'بيعت بضاعة بمبلغ 1800 دولار بالأجل',
+    domain: 'تجاري',
+    difficulty: 'medium',
+    expectedAccounts: ['accounts_receivable', 'sales_revenue'],
+    expectedLines: [
+      { accountId: 'accounts_receivable', side: 'debit', amount: 1800 },
+      { accountId: 'sales_revenue', side: 'credit', amount: 1800 },
+    ],
+    explanation: 'المدينون (أصل) زاد ⟵ مدين. إيراد المبيعات زاد ⟵ دائن.',
+  },
+  {
+    id: 'q3',
+    text: 'دفعت مصروف نقل 350 دولار نقداً',
+    domain: 'تشغيلي',
+    difficulty: 'easy',
+    expectedAccounts: ['transportation_expense', 'cash'],
+    expectedLines: [
+      { accountId: 'transportation_expense', side: 'debit', amount: 350 },
+      { accountId: 'cash', side: 'credit', amount: 350 },
+    ],
+    explanation: 'مصروف النقل زاد ⟵ مدين. النقدية نقصت ⟵ دائن.',
+  },
+  {
+    id: 'q4',
+    text: 'اشتريت سيارة للشركة بقيمة 15000 دولار من البنك',
+    domain: 'أصول ثابتة',
+    difficulty: 'medium',
+    expectedAccounts: ['vehicles', 'bank'],
+    expectedLines: [
+      { accountId: 'vehicles', side: 'debit', amount: 15000 },
+      { accountId: 'bank', side: 'credit', amount: 15000 },
+    ],
+    explanation: 'السيارات (أصل ثابت) زادت ⟵ مدين. البنك نقص ⟵ دائن.',
+  },
+  {
+    id: 'q5',
+    text: 'قدمت خدمة استشارية بمبلغ 1200 دولار نقداً',
+    domain: 'خدمي',
+    difficulty: 'easy',
+    expectedAccounts: ['cash', 'services_revenue'],
+    expectedLines: [
+      { accountId: 'cash', side: 'debit', amount: 1200 },
+      { accountId: 'services_revenue', side: 'credit', amount: 1200 },
+    ],
+    explanation: 'النقدية زادت ⟵ مدين. إيراد الخدمات زاد ⟵ دائن.',
+  },
+];
